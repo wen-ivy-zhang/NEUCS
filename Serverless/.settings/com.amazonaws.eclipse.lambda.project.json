@@ -1,0 +1,1 @@
+{"lastDeploymentHandler":"ivyzhangAWS.StreamLambdaHandler","lastInvokeHandler":null,"handlerMetadata":{"ivyzhangAWS.StreamLambdaHandler":{"deployment":{"regionId":"us-west-2","awsLambdaFunctionName":"Serverless","awsIamRoleName":"WenZhangLamda","awsS3BucketName":"ivyzhangbucket","memory":0,"timeout":0},"invoke":null}},"lastInvokedHandlerDeployed":false}

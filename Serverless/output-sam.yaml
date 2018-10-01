@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS Serverless Jersey API - ivyzhangAWS::Serverless
+Outputs:
+  ServerlessApi:
+    Description: URL for application
+    Export:
+      Name: ServerlessApi
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping
+Resources:
+  ServerlessFunction:
+    Properties:
+      CodeUri: s3://ivyzhangbucket/0e1f2d0cee0b820347c476cf2c6a5d10
+      Events:
+        GetResource:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+      Handler: ivyzhangAWS.StreamLambdaHandler::handleRequest
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Runtime: java8
+      Timeout: 15
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

@@ -1,0 +1,38 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Transform" : [ "AWS::Serverless-2016-10-31" ],
+  "Description" : "AWS Serverless Jersey API - ivyzhangAWS::Serverless",
+  "Resources" : {
+    "ServerlessFunction" : {
+      "Type" : "AWS::Serverless::Function",
+      "Properties" : {
+        "Role" : null,
+        "MemorySize" : 512,
+        "Runtime" : "java8",
+        "Description" : null,
+        "Policies" : [ "AWSLambdaBasicExecutionRole" ],
+        "CodeUri" : "./target/Serverless-1.0-SNAPSHOT.jar",
+        "Events" : {
+          "GetResource" : {
+            "Type" : "Api",
+            "Properties" : {
+              "Path" : "/{proxy+}",
+              "Method" : "any"
+            }
+          }
+        },
+        "Timeout" : 300,
+        "Handler" : "ivyzhangAWS.StreamLambdaHandler::handleRequest"
+      }
+    }
+  },
+  "Outputs" : {
+    "ServerlessApi" : {
+      "Description" : "URL for application",
+      "Value" : "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ping",
+      "Export" : {
+        "Name" : "ServerlessApi"
+      }
+    }
+  }
+}
